@@ -2,6 +2,7 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    // ✅ tailwind css 커스텀
     extend: {
       width: {
         500: '550px',

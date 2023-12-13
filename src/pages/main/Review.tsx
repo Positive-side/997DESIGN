@@ -87,7 +87,7 @@ const Review = () => {
       <div className="flex flex-row justify-center items-center py-4">
         {[...Array(groupCount)].map((_, index) => (
           <div
-            className={`w-9 h-1 mx-1 duration-700 bg-gray-${selectedButton === index ? '500' : '200'} cursor-pointer`}
+            className={`w-9 h-1 mx-1 duration-700 bg-gray-${selectedButton == index ? '500' : '200'} cursor-pointer`}
             key={index + 1}
             onClick={() => {
               handleClick(index * 4);
