@@ -73,7 +73,7 @@ const Review = () => {
         {cards.slice(start, start + 4).map((card, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center py-3 w-22% h-98 shadow-md duration-700 opacity-${opacity}`}
+            className={`flex flex-col items-center py-3 w-22% h-98 shadow-md opacity-${opacity} duration-700`}
           >
             <div className="w-11/12 min-h-170 bg-blue-200">{card.consumer}</div>
             <div className="w-11/12 mt-2">강릉사임당인절미 ★★★★★</div>
@@ -87,7 +87,7 @@ const Review = () => {
       <div className="flex flex-row justify-center items-center py-4">
         {[...Array(groupCount)].map((_, index) => (
           <div
-            className={`w-9 h-1 mx-1 duration-700 bg-gray-${selectedButton == index ? '500' : '200'} cursor-pointer`}
+            className={`w-9 h-1 mx-1 bg-gray-${selectedButton == index ? '500' : '200'} duration-700 cursor-pointer`}
             key={index + 1}
             onClick={() => {
               handleClick(index * 4);
