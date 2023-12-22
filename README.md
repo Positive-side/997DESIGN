@@ -3,7 +3,7 @@
 - React
 - TypeScript
 - Vite (Build Tool)
-- Tailwind CSS ([Tailwind](https://tailwindcss.com/docs/installation))
+- styled-components ([Styled-Component](https://styled-components.com/))
 
 </br>
 
@@ -14,8 +14,8 @@
 `✅ Prettier - Code formatter`
 - 코드 포멧팅 설정 플러그인
 
-`✅ Tailwind CSS IntelliSense`
-- Tailwind CSS 속성 자동 완성 플러그인
+`✅ vscode-styled-components`
+- styled-components CSS 속성 자동 완성 플러그인
 
 `✅ ES7 React/Redux/GraphQL/React-Native snippets`
 - 단축키를 이용한 함수형 컴포넌트 생성 플러그인
@@ -65,9 +65,6 @@
 `✅ .gitignore`
 -  Git이 추적하지 않을 파일 및 디렉토리를 명시하여 버전 관리에서 제외시키는 설정 파일
 
-`✅ .tailwind.config.js`
--  tailwind css 관련 설정 파일
-
 `✅ .postcss.confing.js`
 -  CSS를 변환하고 확장하기 위한 도구로 관련 설정을 추가하는 파일
 
@@ -109,6 +106,7 @@ npm run format
 
 ✅ 명명 규칙
 - 컴포넌트 이름, 생성자, 변수, 함수에는 카멜케이스 사용
+- styled-components 생성 시, 컴포넌트 이름은 St로 시작
 
 ✅ 함수 사용
 - 함수 표현식 대신 화살표 함수 사용

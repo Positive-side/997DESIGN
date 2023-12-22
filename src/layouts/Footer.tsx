@@ -1,13 +1,20 @@
 import Content from '@/layouts/Content';
+import styled from 'styled-components';
 
 const Footer = () => {
   return (
-    <div className="w-full bg-red-200 h-52 ">
+    <StFooterWrapper>
       <Content>
-        <div className="h-52">footer</div>
+        <div>footer</div>
       </Content>
-    </div>
+    </StFooterWrapper>
   );
 };
+
+const StFooterWrapper = styled.div`
+  width: 100%;
+  height: 208px;
+  background-color: #ffaebb;
+`;
 
 export default Footer;

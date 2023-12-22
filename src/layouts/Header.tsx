@@ -1,5 +1,6 @@
 import Content from '@/layouts/Content';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,33 +18,82 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-24 bg-white z-50">
+    <StHeaderWrapper>
       <Content>
-        <div className="w-full h-24 flex flex-row justify-between items-center">
-          <div className="w-48 text-5xl cursor-pointer" onClick={goToMainPage}>
-            LOGO
-          </div>
-          <div className="w-500 flex flex-row justify-between items-center ">
-            <ul className="w-full flex flex-row justify-evenly items-center ">
-              <li className="cursor-pointer" onClick={goToDetailPage}>
-                포트폴리오
-              </li>
-              <li className="cursor-pointer">주문하기</li>
-              <li className="cursor-pointer" onClick={goToReviewPage}>
-                고객후기
-              </li>
-              <li className="cursor-pointer">문의하기</li>
+        <StContentWrapper>
+          <div onClick={goToMainPage}>LOGO</div>
+          <div>
+            <ul>
+              <li onClick={goToDetailPage}>포트폴리오</li>
+              <li>주문하기</li>
+              <li onClick={goToReviewPage}>고객후기</li>
+              <li>문의하기</li>
             </ul>
-            <div className="w-2/5 bg-red-100 flex flex-row justify-center items-center">
+            <div>
               <span>kak</span>
               <span>blo</span>
               <span>ins</span>
             </div>
           </div>
-        </div>
+        </StContentWrapper>
       </Content>
-    </div>
+    </StHeaderWrapper>
   );
 };
+
+const StHeaderWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96px;
+  background-color: #fff;
+  z-index: 50;
+`;
+
+const StContentWrapper = styled.div`
+  width: 100%;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div:first-child {
+    width: 192px;
+    font-size: 48px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  & > div:nth-child(2) {
+    width: 550px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+
+      li {
+        cursor: pointer;
+      }
+    }
+
+    div {
+      width: 40%;
+      background-color: yellow;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+`;
 
 export default Header;

@@ -1,9 +1,17 @@
+import styled from 'styled-components';
+
 const Portfolio = () => {
   return (
-    <div className="h-800 py-2 border-2 border-solid border-red-500">
+    <StPortfolioWrapper>
       <p>dsfsf</p>
-    </div>
+    </StPortfolioWrapper>
   );
 };
+
+const StPortfolioWrapper = styled.div`
+  height: 800px;
+  padding: 8px 0;
+  border: 2px solid red;
+`;
 
 export default Portfolio;

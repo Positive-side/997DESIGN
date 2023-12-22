@@ -1,9 +1,22 @@
+import styled from 'styled-components';
+
 const Identity = () => {
   return (
-    <div className="min-h-800 py-4">
-      <h1 className="text-5xl mb-8">IDENTITY</h1>
-    </div>
+    <StIdentityWrapper>
+      <h1>IDENTITY</h1>
+    </StIdentityWrapper>
   );
 };
+
+const StIdentityWrapper = styled.div`
+  min-height: 800px;
+  padding: 16px 0;
+
+  h1 {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+`;
 
 export default Identity;

@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+interface StyledProps {
+  fontWeight?: string;
+  opacityValue?: number;
+  buttonNum?: number;
+  buttonIndex?: number;
+}
 
 const Review = () => {
   const navigate = useNavigate();
@@ -55,48 +63,143 @@ const Review = () => {
   }, [selectedButton, groupCount]);
 
   return (
-    <div className="h-800 py-4">
-      <h1 className="text-5xl mb-8">REVIEW</h1>
-      <div className="w-full mb-12 flex flex-row justify-between items-end">
+    <StReviewWrapper>
+      <h1>REVIEW</h1>
+      <StTitle>
         <div>
-          <h2 className="text-3xl my-1 font-light">그리미아트를 이용해주신</h2>
-          <h2 className="text-3xl my-1 font-extrabold">고객님들의 소중한 후기입니다.</h2>
+          <StParagraph fontWeight="300">그리미아트를 이용해주신</StParagraph>
+          <StParagraph fontWeight="800">고객님들의 소중한 후기입니다.</StParagraph>
         </div>
-        <div
-          onClick={goToReviewPage}
-          className="text-1xl my-1 font-extrabol border border-solid border-black px-8 py-1 cursor-pointer hover:bg-black hover:text-white duration-500"
-        >
-          REVIEW
-        </div>
-      </div>
-      <div className="flex flex-row justify-between items-center mb-6">
+        <StButton onClick={goToReviewPage}>REVIEW</StButton>
+      </StTitle>
+      <StCardWrapper>
         {cards.slice(start, start + 4).map((card, index) => (
-          <div
-            key={index}
-            className={`flex flex-col items-center py-3 w-22% h-98 shadow-md opacity-${opacity} duration-700`}
-          >
-            <div className="w-11/12 min-h-170 bg-blue-200">{card.consumer}</div>
-            <div className="w-11/12 mt-2">강릉사임당인절미 ★★★★★</div>
-            <div className="w-11/12 mt-2 ellipsis-line font-light">
+          <StCard opacityValue={opacity} key={index}>
+            <div>{card.consumer}</div>
+            <div>강릉사임당인절미 ★★★★★</div>
+            <div>
               기획과 아이디어가 접목된 훌륭한 로고 디자인에 매우 만족했습니다. 저희 브랜드를 잘 표현해주셨고 수정작업이
               번거로우셨을텐데 아주 친절하게 잘 마무리해주셨습니다.
             </div>
-          </div>
+          </StCard>
         ))}
-      </div>
-      <div className="flex flex-row justify-center items-center py-4">
+      </StCardWrapper>
+      <StPagenationWrapper>
         {[...Array(groupCount)].map((_, index) => (
-          <div
-            className={`w-9 h-1 mx-1 bg-gray-${selectedButton == index ? '500' : '200'} duration-700 cursor-pointer`}
+          <StPagenation
+            buttonNum={selectedButton}
+            buttonIndex={index}
             key={index + 1}
             onClick={() => {
               handleClick(index * 4);
             }}
           />
         ))}
-      </div>
-    </div>
+      </StPagenationWrapper>
+    </StReviewWrapper>
   );
 };
+
+const StReviewWrapper = styled.div`
+  min-height: 800px;
+  padding: 16px 0;
+
+  h1 {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+`;
+
+const StTitle = styled.div`
+  width: 100%;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
+
+const StParagraph = styled.h2<StyledProps>`
+  font-size: 30px;
+  line-height: 36px;
+  margin: 4px 0;
+  font-weight: ${({ fontWeight }) => fontWeight};
+`;
+
+const StButton = styled.div`
+  font-size: 16px;
+  font-weight: 300;
+  border: 1px solid #000;
+  margin: 4px 0;
+  padding: 4px 32px;
+  cursor: pointer;
+  color: #000;
+  transition-duration: 500ms;
+
+  &:hover {
+    background-color: #000;
+    color: #fff; /* 호버됐을 때 텍스트 색상 */
+  }
+`;
+
+const StCardWrapper = styled.div`
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StCard = styled.div<StyledProps>`
+  width: 22%;
+  padding: 12px 0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition-duration: 700ms;
+  opacity: ${({ opacityValue }) => opacityValue};
+
+  & > div:first-child {
+    width: 91.666667%;
+    min-height: 170px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+  }
+
+  & > div:nth-child(2) {
+    width: 91.666667%;
+    margin-top: 8px;
+  }
+
+  & > div:nth-child(3) {
+    width: 91.666667%;
+    margin-top: 8px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+`;
+
+const StPagenationWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+`;
+
+const StPagenation = styled.div<StyledProps>`
+  width: 36px;
+  height: 4px;
+  margin: 0 4px;
+  transition-duration: 700ms;
+  background-color: ${({ buttonNum, buttonIndex }) => (buttonNum === buttonIndex ? '#787878' : '#e6e4e4')};
+  cursor: pointer;
+`;
 
 export default Review;
