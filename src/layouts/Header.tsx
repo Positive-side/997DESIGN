@@ -81,6 +81,7 @@ const StContentWrapper = styled.div`
       align-items: center;
 
       li {
+        list-style: none;
         cursor: pointer;
       }
     }
