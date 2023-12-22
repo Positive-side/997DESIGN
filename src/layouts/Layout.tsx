@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Layout = (props: { children: React.ReactNode }) => {
   return (
     <div>
-      <StLayoutWrapper className="mt-24">{props.children}</StLayoutWrapper>
+      <StLayoutWrapper>{props.children}</StLayoutWrapper>
     </div>
   );
 };
